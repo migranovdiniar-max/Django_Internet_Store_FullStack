@@ -1,7 +1,12 @@
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #343a40;
-    padding: 10px 0;
-  }
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  padding: 10px 0;
+}
