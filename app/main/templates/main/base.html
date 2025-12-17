@@ -84,12 +84,14 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="carts/cart.html"
+                <a class="nav-link text-white" href="/carts/cart.html"
                   >Корзина</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="users/login.html">Войти</a>
+                <a class="nav-link text-white" href="/users/login.html"
+                  >Войти</a
+                >
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -103,14 +105,14 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item text-white" href="carts/cart.html"
+                    <a class="dropdown-item text-white" href="/carts/cart.html"
                       >Корзина</a
                     >
                   </li>
                   <li>
                     <a
                       class="dropdown-item text-white"
-                      href="users/profile.html"
+                      href="/users/profile.html"
                       >Личный кабинет</a
                     >
                   </li>
@@ -166,37 +168,51 @@
             </button>
             <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
               <li>
-                <a class="dropdown-item text-white" href="goods/catalog.html"
+                <a
+                  class="dropdown-item text-white"
+                  href="{% url 'catalog:index' %}"
                   >Все товары</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-white" href="goods/catalog.html"
+                <a
+                  class="dropdown-item text-white"
+                  href="{% url 'catalog:index' %}"
                   >Кухня</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-white" href="goods/catalog.html"
+                <a
+                  class="dropdown-item text-white"
+                  href="{% url 'catalog:index' %}"
                   >Спальня</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-white" href="goods/catalog.html"
+                <a
+                  class="dropdown-item text-white"
+                  href="{% url 'catalog:index' %}"
                   >Гостинная</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-white" href="goods/catalog.html"
+                <a
+                  class="dropdown-item text-white"
+                  href="{% url 'catalog:index' %}"
                   >Офис</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-white" href="goods/catalog.html"
+                <a
+                  class="dropdown-item text-white"
+                  href="{% url 'catalog:index' %}"
                   >Фурнитура</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-white" href="goods/catalog.html"
+                <a
+                  class="dropdown-item text-white"
+                  href="{% url 'catalog:index' %}"
                   >Декор</a
                 >
               </li>
@@ -312,7 +328,7 @@
                     </div>
                     <!-- Закончилась разметка корзины -->
                   </div>
-                  <a class="btn btn-dark" href="orders/create_order.html">
+                  <a class="btn btn-dark" href="/orders/create_order.html">
                     Оформить заказ
                   </a>
                 </div>
