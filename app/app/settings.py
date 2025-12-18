@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'goods.context_processors.categories',
             ],
         },
     },
@@ -126,6 +127,9 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     str(BASE_DIR / 'static')
 ]
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 INTERNAL_IPS = [
     # 
