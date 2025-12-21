@@ -1,7 +1,7 @@
 {% extends 'main/base.html' %} {% load static %} {% block content %}
 <!-- Контент на странице -->
 <div class="container mt-5">
-  <p><a href="{% url 'catalog:index' %}">Back to catalog</a></p>
+  <p><a href="{% url 'catalog:index' 'all-goods' %}">Back to catalog</a></p>
   <div class="card mb-4 custom-shadow">
     <div class="row">
       <!-- Миниатюры -->
