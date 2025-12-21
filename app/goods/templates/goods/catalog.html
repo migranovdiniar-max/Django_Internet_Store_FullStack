@@ -1,4 +1,5 @@
 {% extends 'main/base.html' %} {% load static %} {% block content %}
+{% load goods_tags %}
 <div class="row">
   <!-- Форма фильтров -->
   <div class="dropdown mb-2">
@@ -12,7 +13,7 @@
     </button>
 
     <form
-      action=""
+      action="{% url 'catalog:index' slug_url %}"
       method="get"
       class="dropdown-menu bg-dark"
       data-bs-theme="dark"
@@ -23,9 +24,10 @@
           type="checkbox"
           name="on_sale"
           id="flexCheckDefault"
-          value="on"
+          value="on" 
+          {% if request.GET.on_sale == "on" %} checked {% endif %}
         />
-        <input type="hidden" name="q" value="request.GET.q" />
+        {% comment %} <input type="hidden" name="q" value="request.GET.q" /> {% endcomment %}
         <label class="form-check-label" for="flexCheckDefault">
           Товары по акции
         </label>
@@ -38,7 +40,7 @@
           name="order_by"
           id="flexRadioDefault1"
           value="default"
-          checked
+          {% if request.GET.order_by == 'default' or not request.GET.order_by %} checked {% endif %}
         />
         <label class="form-check-label" for="flexRadioDefault1">
           По умолчанию
@@ -51,6 +53,7 @@
           name="order_by"
           id="flexRadioDefault2"
           value="price"
+          {% if request.GET.order_by == 'price' %} checked {% endif %}
         />
         <label class="form-check-label" for="flexRadioDefault2">
           От дешевых к дорогим
@@ -63,6 +66,7 @@
           name="order_by"
           id="flexRadioDefault3"
           value="-price"
+          {% if request.GET.order_by == '-price' %} checked {% endif %}
         />
         <label class="form-check-label" for="flexRadioDefault3">
           От дорогих к дешевым
@@ -128,7 +132,7 @@
     <li class="page-item">
       <a
         class="page-link"
-        href="?page={{ goods.previous_page_number }}"
+        href="?{% change_params page=goods.previous_page_number %}"
         aria-label="Previous"
       >
         <span aria-hidden="true">&laquo;</span>
@@ -147,13 +151,13 @@
     </li>
     {% else %}
     <li class="page-item">
-      <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+      <a class="page-link" href="?{% change_params page=num %}">{{ num }}</a>
     </li>
     {% endif %} {% endfor %} {% if goods.has_next %}
     <li class="page-item">
       <a
         class="page-link"
-        href="?page={{ goods.next_page_number }}"
+        href="?{% change_params page=goods.next_page_number %}"
         aria-label="Next"
       >
         <span aria-hidden="true">&raquo;</span>
