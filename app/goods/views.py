@@ -1,5 +1,6 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
+from django.core.paginator import Paginator
 
 from goods.models import Categories, Products
 
@@ -13,9 +14,18 @@ def catalog(request, category_slug):
         if not goods.exists():
             raise Http404()
 
+    paginator = Paginator(goods, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    start_page = max(1, page_obj.number - 2)
+    end_page = min(page_obj.paginator.num_pages, page_obj.number + 2)
+    page_range = range(start_page, end_page + 1)
+
     context = {
         "title": "Каталог товаров",
-        "goods": goods
+        "goods": page_obj,
+        "page_range": page_range,
     }
 
     return render(request, 'goods/catalog.html', context)
