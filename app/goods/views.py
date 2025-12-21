@@ -1,10 +1,17 @@
-from django.shortcuts import render
+from django.http import Http404
+from django.shortcuts import get_object_or_404, render
 
-from goods.models import Products
+from goods.models import Categories, Products
 
 
-def catalog(request):
-    goods = Products.objects.all()
+def catalog(request, category_slug):
+    if category_slug == 'all-goods':
+        goods = Products.objects.all()
+    else:
+        category = get_object_or_404(Categories, slug=category_slug)
+        goods = Products.objects.filter(category=category)
+        if not goods.exists():
+            raise Http404()
 
     context = {
         "title": "Каталог товаров",
